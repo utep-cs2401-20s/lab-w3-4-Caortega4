@@ -1,7 +1,16 @@
 public class TorusGameOfLife extends GameOfLife {
-    int size;
-    int[][] board;
-    int[][] previous;
+
+    public TorusGameOfLife(){
+        super();
+    }
+
+    public TorusGameOfLife(int n){
+        super(n);
+    }
+
+    public TorusGameOfLife(int[][] arr) {
+        super(arr);
+    }
 
     @Override
     public int neighbors(int row, int col) {
