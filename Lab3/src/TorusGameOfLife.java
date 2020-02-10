@@ -1,4 +1,4 @@
-public class TorusGameOfLife extends GameOfLife {
+public class  TorusGameOfLife extends GameOfLife {
 
     public TorusGameOfLife(){
         super();
