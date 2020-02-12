@@ -669,5 +669,104 @@ public class GOLTester {
         sol.oneStep();
         assertEquals(expected, sol.getBoard());
     }
+
+    @Test
+    public void testEvolutionTorus1(){
+        int[][]arr = {
+
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {1,1,0,0,1},
+                {0,0,0,0,0},
+                {0,0,0,0,0}
+        };
+
+        int[][]expected = {
+
+                {0,0,0,0,0},
+                {0,0,0,0,0},
+                {1,1,0,0,1},
+                {0,0,0,0,0},
+                {0,0,0,0,0}
+        };;
+
+        TorusGameOfLife sol = new TorusGameOfLife(arr);
+        sol.evolution(4);
+        assertEquals(expected, sol.getBoard());
+    }
+
+    @Test
+    public void testEvolutionTorus2(){
+        int[][]arr = {
+
+                {1,0,0,0,1,1},
+                {0,0,0,1,1,1},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0}
+        };
+
+        int[][]expected = {
+
+                {1,0,0,1,0,0},
+                {1,0,0,1,0,0},
+                {0,0,0,0,1,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,1}
+        };
+
+        TorusGameOfLife sol = new TorusGameOfLife(arr);
+        sol.evolution(3);
+        assertEquals(expected, sol.getBoard());
+    }
+
+    @Test
+    public void testEvolutionTorus3(){
+        int[][]arr = {
+                {0,0,0,0,1,1},
+                {1,1,0,0,0,0},
+                {1,1,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,1,1}
+        };
+
+        int[][]expected = {
+                {0,0,0,0,1,0},
+                {0,1,0,0,0,0},
+                {1,1,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,0,0},
+                {0,0,0,0,1,1}
+        };
+
+        TorusGameOfLife sol = new TorusGameOfLife(arr);
+        sol.evolution(5);
+        assertEquals(expected, sol.getBoard());
+    }
+
+    @Test
+    public void testEvolutionTorus4(){
+        int[][]arr = {};
+
+        int[][]expected = {};
+
+        TorusGameOfLife sol = new TorusGameOfLife(arr);
+        sol.evolution(0);
+        assertEquals(expected, sol.getBoard());
+    }
+
+    @Test
+    public void testEvolutionTorus5(){
+        int[][]arr = {};
+
+        int[][]expected = {};
+
+        TorusGameOfLife sol = new TorusGameOfLife(arr);
+        sol.evolution(0);
+        assertEquals(expected, sol.getBoard());
+    }
 }
 
