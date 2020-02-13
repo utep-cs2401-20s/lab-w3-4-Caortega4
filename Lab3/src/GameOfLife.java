@@ -4,10 +4,12 @@ public class GameOfLife{
     int[][] board;
     int[][] previous;
 
+    //Default constructor
     public GameOfLife() {
 
     }
 
+    //Constructor with n size boards
     public GameOfLife(int n){
         this.size = n;
         this.board = new int[n][n];
@@ -15,17 +17,20 @@ public class GameOfLife{
 
     }
 
+    //Constructor with input 2D array
     public GameOfLife(int[][] board){
         size = board.length;
         this.board = new int[size][size];
         this.previous = new int[size][size];
 
+        //Copies the 2D array to previous
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 this.previous[i][j] = board[i][j];
             }
         }
 
+        //Copies the 2D array to the actual board
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 this.board[i][j] = board[i][j];
@@ -34,10 +39,12 @@ public class GameOfLife{
 
     }
 
+    //Returns the 2D board
     public int[][] getBoard() {
         return board;
     }
 
+    //Returns the number of alive neighbors of a cell with indices (row, col)
     public int neighbors(int row, int col) {
         int count = 0;
         int prevRow = row - 1;
@@ -45,7 +52,9 @@ public class GameOfLife{
         int nextCol = col + 1;
         int nextRow = row + 1;
 
+        //If statements to check if the cell's neighbors are not out of bounds
         if (row != 0 && col != 0) {
+            //If the cell is alive increment count
             if (previous[prevRow][prevCol] == 1) count++;
         }
 
@@ -79,6 +88,7 @@ public class GameOfLife{
         return count;
     }
 
+    //Takes the board to its next state
     public void oneStep(){
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -105,6 +115,9 @@ public class GameOfLife{
                 }
             }
         }
+
+        //Prints the board to visualize what is happening
+        printBoards();
     }
 
     public void evolution(int n){
@@ -113,14 +126,20 @@ public class GameOfLife{
         }
     }
 
+    //Prints the previous board and the latest state of board
     public void printBoards(){
+
+        System.out.println("Previous board");
         for (int i = 0; i < previous.length; i++) {
             for (int j = 0; j < previous.length; j++) {
                 System.out.print(previous[i][j]);
             }
             System.out.println("");
         }
+
+
         System.out.println("___________________________");
+        System.out.println("Actual board");
         for (int i = 0; i < previous.length; i++) {
             for (int j = 0; j < previous.length; j++) {
                 System.out.print(board[i][j]);
@@ -130,21 +149,4 @@ public class GameOfLife{
         System.out.println("___________________________");
 
     }
-
-    public static void main(String[] args) {
-        int[][] arr = {
-                {0,0,0,0,0},
-                {0,0,0,0,0},
-                {0,1,1,1,0},
-                {0,0,0,0,0},
-                {0,0,0,0,0}
-        };
-
-        GameOfLife test = new GameOfLife(arr);
-
-        test.printBoards();
-        test.oneStep();
-        test.printBoards();
-    }
-
 }

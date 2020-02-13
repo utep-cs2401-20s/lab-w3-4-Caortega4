@@ -1,5 +1,7 @@
 public class  TorusGameOfLife extends GameOfLife {
 
+
+    //Torus constructors
     public TorusGameOfLife(){
         super();
     }
@@ -12,6 +14,7 @@ public class  TorusGameOfLife extends GameOfLife {
         super(arr);
     }
 
+    //Overrides neighbors to implement the new set of rules that Torus Game of Life has
     @Override
     public int neighbors(int row, int col) {
         int prevRow = (row + size - 1) % size;
